@@ -39,3 +39,43 @@ class AcercaDe extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildPersonInfo({required String imageAsset, required String name}) {
+    return Card(
+      color: Colors.pink[50],
+      elevation: 4.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Column(
+        children: [
+          SizedBox(height: 10),
+          Container(
+            width: 200,
+            height: 300,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              image: DecorationImage(
+                image: AssetImage(imageAsset),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              name,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
