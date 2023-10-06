@@ -16,7 +16,35 @@ class Registro extends StatelessWidget {
         "precio": precio,
         "stock": stock
       });
-@override
+
+      // Mostrar un SnackBar con el mensaje de registro exitoso
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('¡Producto registrado!'),
+        ),
+      );
+
+      // Limpia los controladores después de registrar el producto
+      IdController.clear();
+      NombreController.clear();
+      PrecioController.clear();
+      StockController.clear();
+    } else {
+      // Mostrar un SnackBar con un mensaje de error si algún campo está vacío
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Por favor, complete todos los campos.'),
+        ),
+      );
+    }
+  }
+
+  TextEditingController IdController = TextEditingController();
+  TextEditingController NombreController = TextEditingController();
+  TextEditingController PrecioController = TextEditingController();
+  TextEditingController StockController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 4.0,
@@ -144,7 +172,6 @@ class Registro extends StatelessWidget {
                   ),
                 ),
               ),
-
               const SizedBox(height: 15),
               ElevatedButton(
                 onPressed: () async {
@@ -153,3 +180,10 @@ class Registro extends StatelessWidget {
                 },
                 child: const Text('Agregar', style: TextStyle(fontWeight: FontWeight.bold)),
               )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
