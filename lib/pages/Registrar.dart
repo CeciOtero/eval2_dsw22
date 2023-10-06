@@ -144,3 +144,12 @@ class Registro extends StatelessWidget {
                   ),
                 ),
               ),
+
+              const SizedBox(height: 15),
+              ElevatedButton(
+                onPressed: () async {
+                  await agregarProducto(IdController.text, NombreController.text,
+                          PrecioController.text, StockController.text);
+                },
+                child: const Text('Agregar', style: TextStyle(fontWeight: FontWeight.bold)),
+              )
